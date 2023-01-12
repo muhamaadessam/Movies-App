@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:movies/Core/Services/service_locator.dart';
-import 'Movies/presentation/screens/movies_screen.dart';
+import 'core/services/services_locator.dart';
+import 'core/utils/app_string.dart';
+import 'movies/presentation/screens/movies_screen.dart';
 
-void main() async {
-  ServicesLocator().inti();
+void main() {
+  ServicesLocator().init();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MoviesApp',
+      title: AppString.appName,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colors.grey.shade900,
-        primarySwatch: Colors.blue,
       ),
       home: const MoviesScreen(),
     );
